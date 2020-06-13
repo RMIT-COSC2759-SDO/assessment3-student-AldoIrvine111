@@ -58,9 +58,11 @@ jobs:
       - run: 
           name: Deploy infra
           command: |
+            ls
             cd artifacts/infra
             make init
             make up
+            terraform output endpoint > ../dbendpoint.txt
 
       - run:
           name: Deploy app
