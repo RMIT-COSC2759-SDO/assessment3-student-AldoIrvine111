@@ -192,17 +192,18 @@ workflows:
       - build
       - deploy-test:
           requires:
-            - build
+            - package
       # - integration:
       #     requires: 
       #       - build
       # - e2e:
       #     requires:
       #       - build
-      # - package:
-      #     requires:
-      #       - e2e
-      #       - integration
+      - package:
+          requires:
+            - build
+            # - e2e
+            # - integration
       #     filters:
       #       branches:
       #         only: master
