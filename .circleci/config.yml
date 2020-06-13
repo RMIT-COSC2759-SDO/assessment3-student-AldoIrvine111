@@ -72,7 +72,7 @@ jobs:
           name: Upgrade Database
           command: |
             sleep 10
-            kubectl exec deployment/ACME -n test -- env NODE_ENV=production node_modules/.bin/sequelize db:migrate
+            kubectl exec deployment/acme -n test -- env NODE_ENV=production node_modules/.bin/sequelize db:migrate
 
 
   integration:
