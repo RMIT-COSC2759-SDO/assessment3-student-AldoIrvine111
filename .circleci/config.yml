@@ -172,6 +172,8 @@ jobs:
             npx wait-on http://localhost:3000
             
             npm run test-e2e
+          environment:
+            ENDPOINT: http://a39a58b5d384a4e629a4b5ea72f40017-1997244477.us-east-1.elb.amazonaws.com
 
   package:
     machine: true
@@ -240,9 +242,9 @@ workflows:
       # - integration:
       #     requires: 
       #       - build
-      # - e2e:
-      #     requires:
-      #       - build
+      - e2e:
+          requires:
+            - build
       - package:
           requires:
             - build
