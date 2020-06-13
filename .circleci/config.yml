@@ -75,6 +75,35 @@ jobs:
             sleep 10
             kubectl exec deployment/acme -n test -- env NODE_ENV=production node_modules/.bin/sequelize db:migrate
 
+  deploy-prod:
+    docker:
+      - image: cimg/base:2020.01
+    environment:
+      ENV: prod
+    steps:
+      - attach_workspace:
+          at: ./
+      - setup-cd
+
+      - run: 
+          name: Deploy infra
+          command: |
+            cd artifacts/infra
+            make init
+            make up
+            terraform output endpoint > ../dbendpoint.txt
+
+      - run:
+          name: Deploy app
+          command: |
+            kubectl get namespace prod || kubectl create namespace prod
+            helm upgrade app artifacts/acme-0.1.0.tgz -i -n prod --wait --set image=$(cat artifacts/image.txt),dbhost=$(cat artifacts/dbendpoint.txt)
+
+      - run:
+          name: Upgrade Database
+          command: |
+            sleep 10
+            kubectl exec deployment/acme -n prod -- env NODE_ENV=production node_modules/.bin/sequelize db:migrate
 
   integration:
     docker:
@@ -201,6 +230,9 @@ workflows:
       - deploy-test:
           requires:
             - package
+      - deploy-prod:
+          requires:
+            - deploy-test
       # - integration:
       #     requires: 
       #       - build
