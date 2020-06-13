@@ -232,6 +232,10 @@ workflows:
             - package
       - deploy-prod:
           requires:
+            - approval
+      - approval:
+          type: approval
+          requires:
             - deploy-test
       # - integration:
       #     requires: 
