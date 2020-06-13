@@ -66,7 +66,7 @@ jobs:
           name: Deploy app
           command: |
             helm upgrade app artifacts/acme-0.1.0.tgz -i -n test --wait --set image=$(cat artifacts/image.txt)
-            
+
   integration:
     docker:
       - image: circleci/node:lts
@@ -192,16 +192,16 @@ workflows:
       - deploy-test:
           requires:
             - build
-      - integration:
-          requires: 
-            - build
-      - e2e:
-          requires:
-            - build
-      - package:
-          requires:
-            - e2e
-            - integration
-          filters:
-            branches:
-              only: master
+      # - integration:
+      #     requires: 
+      #       - build
+      # - e2e:
+      #     requires:
+      #       - build
+      # - package:
+      #     requires:
+      #       - e2e
+      #       - integration
+      #     filters:
+      #       branches:
+      #         only: master
