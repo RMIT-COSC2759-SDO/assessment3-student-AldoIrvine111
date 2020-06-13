@@ -66,8 +66,7 @@ jobs:
       - run:
           name: Deploy app
           command: |
-            kubectl get namespace test 
-            kubectl create namespace
+            kubectl get namespace test || kubectl create namespace
             helm upgrade app artifacts/ACME-0.1.0.tgz -i -n test --wait --set image=$(cat artifacts/image.txt),dbhost=$(cat artifacts/dbendpoint.txt)
 
       - run:
