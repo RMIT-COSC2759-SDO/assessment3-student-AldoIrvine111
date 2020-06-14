@@ -173,7 +173,7 @@ jobs:
             
             npm run test-e2e
           environment:
-            ENDPOINT: http://a39a58b5d384a4e629a4b5ea72f40017-1997244477.us-east-1.elb.amazonaws.com
+            ENDPOINT: http://ad3afa8f1ff7d4fafa92e1c73c759a94-1855793061.us-east-1.elb.amazonaws.com
 
   package:
     machine: true
@@ -244,7 +244,7 @@ workflows:
             - build
       - e2e:
           requires:
-            - deploy-prod
+            - deploy-test
       - package:
           requires:
             - build
