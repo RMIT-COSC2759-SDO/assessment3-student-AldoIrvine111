@@ -36,7 +36,7 @@ mkdir helm
 cd helm
 helm create acme
 ```
-![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/helm.png)
+![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/helm.PNG)
 
 **helm create acme** will initialize the project name acme and it will generate several files such as template folder (which stores the deployment.yaml and services.yaml), charts.yaml, and values.yaml. For this application, we will create a deployment and a service to allow us to access the application from
 the internet (an ingress controller will automatically be created for us). We will configure the application to use port 80.
@@ -44,9 +44,9 @@ the internet (an ingress controller will automatically be created for us). We wi
 We will set image and database endpoint by using variables which we will store in values.yaml. By using variables, we will achieve easier maintainability and reusability of the code. It will collect the value of the variable from values.yaml and then passed it back.
 
 
-![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/deployment.png)
-![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/services.png)
-![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/values.png)
+![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/deployment.PNG)
+![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/services.PNG)
+![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/values.PNG)
 
 This is the variable for Images and Database Endpoints.
 
@@ -65,14 +65,14 @@ make up
 
 make up will generate an output which we will use to configure on our Makefile in infra folder and config.yaml. These outputs are our information for S3 bucket, dynamoDB, and ECR URL which we deployed in AWS. 
 
-![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/output.png)
+![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/output.PNG)
 
 We are going to set up a remote backend for terraform, to store the statefile somewhere we can be accessed by the CI pipeline. We do this by setting up an S3 bucket and a DynamoDB table. We will make some changes to our terraform deployment Makefile to point the correct bucket and table
-![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/init.png)
+![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/init.PNG)
 
 Moving on, we will set s3 bucket too along with ECR URL in our CircleCI config.yaml.
-![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/cibucket.png)
-![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/ciecr.png)
+![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/cibucket.PNG)
+![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/ciecr.PNG)
 
 We are configuring this to allow CircleCI to access to our existing dynamoDb, ECR, and s3 bucket on our AWS. We will then change back to environment directory and make kube-up
 
@@ -82,9 +82,9 @@ make kube-up
 ```
 
 This will set-up VPC and subnet in our AWS console and we will take their ID and configure it inside our terraform.tfvars. This allow our app to use the VPC and subnet-ID of our cluster that we have built.
-![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/subnet.png)
-![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/vpc.png)
-![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/tfvars.png)
+![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/subnet.PNG)
+![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/vpc.PNG)
+![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/tfvars.PNG)
 
 Now all we have to do is configure the CircleCI config.yaml.
 
@@ -101,11 +101,11 @@ sleep 10
 ```
  to upgrade database command.
 
-![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/workflowtest.png)
-![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/deploy-test.png)
-![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/testtest.png)
-![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/testinfra.png)
-![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/test.png)
+![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/workflowtest.PNG)
+![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/deploy-test.PNG)
+![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/testtest.PNG)
+![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/testinfra.PNG)
+![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/test.PNG)
 
 
 
@@ -122,37 +122,37 @@ kubectl get services -n test
 
 Set the workflow from circleCi that to run e2e , it will require deploy-test to finish. 
 
-![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/kubectl.png)
+![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/kubectl.PNG)
 
-![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/e2ecode.png)
+![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/e2ecode.PNG)
 
-![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/e2etest.png)
+![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/e2etest.PNG)
 
-![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/teste2e.png)
+![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/teste2e.PNG)
 
-![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/workflowe2e.png)
+![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/workflowe2e.PNG)
 
 
 ### Deploy the application into a production environment 
 
 Next we will deploy the application into production environment, we will build a new job in our pipeline call **deploy-prod**.  We can recycle the all the code from **deploy-test** and change all the environment from test to prod. 
 
-![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/deploy-prod.png)
+![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/deploy-prod.PNG)
 
-![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/prod.png)
+![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/prod.PNG)
 
-![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/prodinfra.png)
+![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/prodinfra.PNG)
 
-![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/prodprod.png)
+![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/prodprod.PNG)
 
 
 ### Create a stage-gate before deployments are allowed into production
 
 We want to be able to only deploy approved changes to production, so we need to put a stage gate. We will create a new job in workflow called approval, set the type as approval and make the job to require deploy-test.
 We will then set up the dependency of the job **deploy-prod** to required **approval**. This way, it will prompt from CircleCI pipeline for approval to continue deployment to the production environment. Once we approved the job, it will start **deploy-job**.
-![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/workflowprod.png)
+![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/workflowprod.PNG)
 
-![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/approval.png)
+![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/approval.PNG)
 
 
 
