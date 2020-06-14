@@ -239,17 +239,16 @@ workflows:
           type: approval
           requires:
             - deploy-test
-      # - integration:
-      #     requires: 
-      #       - build
+      - integration:
+          requires: 
+            - build
       - e2e:
           requires:
-            - build
+            - deploy-prod
       - package:
           requires:
             - build
-            # - e2e
-            # - integration
+            - integration
           filters:
             branches:
               only: master
