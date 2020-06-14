@@ -45,7 +45,9 @@ We will set image and database endpoint by using variables which we will store i
 
 
 ![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/deployment.PNG)
+
 ![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/services.PNG)
+
 ![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/values.PNG)
 
 This is the variable for Images and Database Endpoints.
@@ -72,6 +74,7 @@ We are going to set up a remote backend for terraform, to store the statefile so
 
 Moving on, we will set s3 bucket too along with ECR URL in our CircleCI config.yaml.
 ![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/cibucket.PNG)
+
 ![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/ciecr.PNG)
 
 We are configuring this to allow CircleCI to access to our existing dynamoDb, ECR, and s3 bucket on our AWS. We will then change back to environment directory and make kube-up
@@ -82,9 +85,13 @@ make kube-up
 ```
 
 This will set-up VPC and subnet in our AWS console and we will take their ID and configure it inside our terraform.tfvars. This allow our app to use the VPC and subnet-ID of our cluster that we have built.
+
 ![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/subnet.PNG)
+
 ![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/vpc.PNG)
+
 ![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/tfvars.PNG)
+
 
 Now all we have to do is configure the CircleCI config.yaml.
 
@@ -102,9 +109,13 @@ sleep 10
  to upgrade database command.
 
 ![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/workflowtest.PNG)
+
 ![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/deploy-test.PNG)
+
 ![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/testtest.PNG)
+
 ![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/testinfra.PNG)
+
 ![repo images](https://github.com/RMIT-COSC2759-SDO/assessment3-student-AldoIrvine111/blob/master/pic/test.PNG)
 
 
